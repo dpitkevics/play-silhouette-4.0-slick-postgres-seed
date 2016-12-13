@@ -1,0 +1,25 @@
+# Created by .ignore support plugin (hsz.mobi)
+### PlayFramework template
+# Ignore Play! working directory #
+bin/
+/db
+.eclipse
+/lib/
+/logs/
+/modules
+/project/target
+/target
+tmp/
+test-result
+server.pid
+*.eml
+/dist/
+.cache
+
+.gitignore
+.idea
+.github
+conf/database.conf
+conf/mailer.conf
+project/project
+project/artifact

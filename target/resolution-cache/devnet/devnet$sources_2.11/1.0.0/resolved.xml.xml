@@ -4,7 +4,7 @@
 		module="devnet$sources_2.11"
 		revision="1.0.0"
 		status="integration"
-		publication="20161213195941"
+		publication="20161213214543"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>
