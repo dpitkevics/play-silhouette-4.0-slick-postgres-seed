@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: com.adrianhurt:play-bootstrap-core_2.11:1.0-P25:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.adrianhurt/play-bootstrap-core_2.11/jars/play-bootstrap-core_2.11-1.0-P25.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.adrianhurt/play-bootstrap-core_2.11/srcs/play-bootstrap-core_2.11-1.0-P25-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: com.typesafe.play:play-mailer_2.11:5.0.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-mailer_2.11/jars/play-mailer_2.11-5.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-mailer_2.11/srcs/play-mailer_2.11-5.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+[debug] Copy resource mappings: 
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\application.conf,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\application.conf)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\application.prod.conf,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\application.prod.conf)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\database.conf,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\database.conf)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\evolutions,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\evolutions)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\mailer.conf,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\mailer.conf)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\messages,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\messages)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\routes,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\routes)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\silhouette.conf,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\silhouette.conf)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\evolutions\default,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\evolutions\default)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\evolutions\default\1.sql,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\evolutions\default\1.sql)
+[debug] 	(C:\Users\danie\IdeaProjects\DevNet\conf\evolutions\default\2.sql,C:\Users\danie\IdeaProjects\DevNet\target\scala-2.11\classes\evolutions\default\2.sql)
