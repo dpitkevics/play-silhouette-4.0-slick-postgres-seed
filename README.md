@@ -1,31 +1,25 @@
-Silhouette Seed Template
+Play 2.5 Silhouette 4.0 Slick PostgreSQL seed
 =====================================
 
-The Silhouette Seed project is an Activator template which shows how [Silhouette](https://github.com/mohiva/play-silhouette) can be implemented in a Play Framework application. It's a starting point which can be extended to fit your needs.
-
-## Example
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-(The "Build App" phase will take a few minutes)
-
-Or you can find a running example of this template under the following URL: https://play-silhouette-seed.herokuapp.com/
+This seed is based on [Play Silhouette seed](https://github.com/mohiva/play-silhouette-seed), but modified to work with PostgreSQL and Slick instead of InMemory database.
 
 ## Features
 
 * Sign Up
 * Sign In (Credentials)
-* Social Auth (Facebook, Google+, VK, Twitter, Xing, Yahoo)
-* Two-factor authentication with Clef
 * Dependency Injection with Guice
 * Publishing Events
 * Avatar service
+
+## Features in Play Silhouette seed, but not implemented to support PostgreSQL yet
+* Social Auth (Facebook, Google+, VK, Twitter, Xing, Yahoo)
+* Two-factor authentication with Clef
 * Remember me functionality
 * Password reset/change functionality
 * Account activation functionality
 * Email sending and auth token cleanup
-* [Security headers](https://www.playframework.com/documentation/2.4.x/SecurityHeaders)
-* [CSRF Protection](https://www.playframework.com/documentation/2.4.x/ScalaCsrf)
+* [Security headers](https://www.playframework.com/documentation/2.5.x/SecurityHeaders)
+* [CSRF Protection](https://www.playframework.com/documentation/2.5.x/ScalaCsrf)
 
 ## Documentation
 
@@ -33,7 +27,7 @@ Consult the [Silhouette documentation](http://silhouette.mohiva.com/docs) for mo
 
 ## Activator
 
-See https://typesafe.com/activator/template/play-silhouette-seed
+Not yet implemented
 
 # License
 
