@@ -1,0 +1,7 @@
+play.mailer {
+  host = "smtp.gmail.com"
+  port = 465
+  ssl = true
+  user = "fulluser@gmail.com"
+  password = "gmail_password"
+}
