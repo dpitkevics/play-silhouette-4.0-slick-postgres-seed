@@ -29,23 +29,23 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="@routes.ApplicationController.index">Silhouette Seed Template</a>
+                    <a class="navbar-brand" href="@controllers.pages.routes.ApplicationController.index">Play 2.5 Silhouette 4.0 Slick PostgreSQL seed</a>
                 </div>
                 <nav class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="@routes.ApplicationController.index">@Messages("home")</a></li>
-                        <li><a href="https://github.com/mohiva/play-silhouette-seed">GitHub</a></li>
+                        <li><a href="@controllers.pages.routes.ApplicationController.index">@Messages("home")</a></li>
+                        <li><a href="https://github.com/dpitkevics/play-silhouette-4.0-slick-postgres-seed">GitHub</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @user.map { u =>
-                            <li><a href="@routes.ApplicationController.index">@u.name</a></li>
+                            <li><a href="@controllers.pages.routes.ApplicationController.index">@u.name</a></li>
                             @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
-                                <li><a href="@routes.ChangePasswordController.view">@Messages("change.password")</a></li>
+                                <li><a href="@controllers.auth.routes.ChangePasswordController.view">@Messages("change.password")</a></li>
                             }
-                            <li><a href="@routes.ApplicationController.signOut">@Messages("sign.out")</a></li>
+                            <li><a href="@controllers.pages.routes.ApplicationController.signOut">@Messages("sign.out")</a></li>
                         }.getOrElse {
-                            <li><a href="@routes.SignInController.view">@Messages("sign.in")</a></li>
-                            <li><a href="@routes.SignUpController.view">@Messages("sign.up")</a></li>
+                            <li><a href="@controllers.auth.routes.SignInController.view">@Messages("sign.in")</a></li>
+                            <li><a href="@controllers.auth.routes.SignUpController.view">@Messages("sign.up")</a></li>
                         }
                     </ul>
                 </nav>

@@ -1,11 +1,12 @@
-package controllers
+package controllers.pages
 
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.{ LogoutEvent, Silhouette }
 import com.mohiva.play.silhouette.impl.providers.SocialProviderRegistry
+import controllers.{ WebJarAssets, pages }
 import play.api.i18n.{ I18nSupport, MessagesApi }
-import play.api.mvc.Controller
+import play.api.mvc.{ Action, AnyContent, Controller }
 import utils.auth.DefaultEnv
 
 import scala.concurrent.Future
@@ -30,7 +31,7 @@ class ApplicationController @Inject() (
    *
    * @return The result to display.
    */
-  def index = silhouette.SecuredAction.async { implicit request =>
+  def index: Action[AnyContent] = silhouette.SecuredAction.async { implicit request =>
     Future.successful(Ok(views.html.home(request.identity)))
   }
 
@@ -39,8 +40,8 @@ class ApplicationController @Inject() (
    *
    * @return The result to display.
    */
-  def signOut = silhouette.SecuredAction.async { implicit request =>
-    val result = Redirect(routes.ApplicationController.index())
+  def signOut: Action[AnyContent] = silhouette.SecuredAction.async { implicit request =>
+    val result = Redirect(pages.routes.ApplicationController.index())
     silhouette.env.eventBus.publish(LogoutEvent(request.identity, request))
     silhouette.env.authenticatorService.discard(request.authenticator, result)
   }

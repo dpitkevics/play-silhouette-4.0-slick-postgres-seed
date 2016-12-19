@@ -1,36 +1,33 @@
-package forms
+package forms.auth
 
 import play.api.data.Form
 import play.api.data.Forms._
 
 /**
- * The form which handles the sign up process.
+ * The form which handles the submission of the credentials.
  */
-object SignUpForm {
+object SignInForm {
 
   /**
    * A play framework form.
    */
   val form = Form(
     mapping(
-      "firstName" -> nonEmptyText,
-      "lastName" -> nonEmptyText,
       "email" -> email,
-      "password" -> nonEmptyText
+      "password" -> nonEmptyText,
+      "rememberMe" -> boolean
     )(Data.apply)(Data.unapply)
   )
 
   /**
    * The form data.
    *
-   * @param firstName The first name of a user.
-   * @param lastName The last name of a user.
    * @param email The email of the user.
    * @param password The password of the user.
+   * @param rememberMe Indicates if the user should stay logged in on the next visit.
    */
   case class Data(
-    firstName: String,
-    lastName: String,
     email: String,
-    password: String)
+    password: String,
+    rememberMe: Boolean)
 }

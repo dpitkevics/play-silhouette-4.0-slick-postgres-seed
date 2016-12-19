@@ -10,8 +10,6 @@ This seed is based on [Play Silhouette seed](https://github.com/mohiva/play-silh
 * Dependency Injection with Guice
 * Publishing Events
 * Avatar service
-
-## Features in Play Silhouette seed, but not implemented to support PostgreSQL yet
 * Social Auth (Facebook, Google+, VK, Twitter, Xing, Yahoo)
 * Two-factor authentication with Clef
 * Remember me functionality

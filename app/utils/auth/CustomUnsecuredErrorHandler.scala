@@ -1,7 +1,7 @@
 package utils.auth
 
 import com.mohiva.play.silhouette.api.actions.UnsecuredErrorHandler
-import play.api.mvc.RequestHeader
+import play.api.mvc.{ RequestHeader, Result }
 import play.api.mvc.Results._
 
 import scala.concurrent.Future
@@ -19,7 +19,7 @@ class CustomUnsecuredErrorHandler extends UnsecuredErrorHandler {
    * @param request The request header.
    * @return The result to send to the client.
    */
-  override def onNotAuthorized(implicit request: RequestHeader) = {
-    Future.successful(Redirect(controllers.routes.ApplicationController.index()))
+  override def onNotAuthorized(implicit request: RequestHeader): Future[Result] = {
+    Future.successful(Redirect(controllers.pages.routes.ApplicationController.index()))
   }
 }

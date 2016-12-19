@@ -1,17 +1,17 @@
-package forms
+package forms.auth
 
 import play.api.data.Forms._
 import play.api.data._
 
 /**
- * The `Reset Password` form.
+ * The `Forgot Password` form.
  */
-object ResetPasswordForm {
+object ForgotPasswordForm {
 
   /**
    * A play framework form.
    */
   val form = Form(
-    "password" -> nonEmptyText
+    "email" -> email
   )
 }

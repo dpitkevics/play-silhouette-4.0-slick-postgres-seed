@@ -1,4 +1,4 @@
-package controllers
+package controllers.auth
 
 import java.util.UUID
 import javax.inject.Inject
@@ -8,7 +8,8 @@ import com.mohiva.play.silhouette.api.repositories.AuthInfoRepository
 import com.mohiva.play.silhouette.api.services.AvatarService
 import com.mohiva.play.silhouette.api.util.PasswordHasherRegistry
 import com.mohiva.play.silhouette.impl.providers._
-import forms.SignUpForm
+import controllers.{ WebJarAssets, auth }
+import forms.auth.SignUpForm
 import models.User
 import models.services.{ AuthTokenService, UserService }
 import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
@@ -50,7 +51,7 @@ class SignUpController @Inject() (
    * @return The result to display.
    */
   def view: Action[AnyContent] = silhouette.UnsecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.signUp(SignUpForm.form)))
+    Future.successful(Ok(views.html.auth.signUp(SignUpForm.form)))
   }
 
   /**
@@ -60,13 +61,13 @@ class SignUpController @Inject() (
    */
   def submit: Action[AnyContent] = silhouette.UnsecuredAction.async { implicit request =>
     SignUpForm.form.bindFromRequest.fold(
-      form => Future.successful(BadRequest(views.html.signUp(form))),
+      form => Future.successful(BadRequest(views.html.auth.signUp(form))),
       data => {
-        val result = Redirect(routes.SignUpController.view()).flashing("info" -> Messages("sign.up.email.sent", data.email))
+        val result = Redirect(auth.routes.SignUpController.view()).flashing("info" -> Messages("sign.up.email.sent", data.email))
         val loginInfo = LoginInfo(CredentialsProvider.ID, data.email)
         userService.retrieve(loginInfo).flatMap {
           case Some(user) =>
-            val url = routes.SignInController.view().absoluteURL()
+            val url = auth.routes.SignInController.view().absoluteURL()
             mailerClient.send(Email(
               subject = Messages("email.already.signed.up.subject"),
               from = Messages("email.from"),
@@ -94,7 +95,7 @@ class SignUpController @Inject() (
               authInfo <- authInfoRepository.add(loginInfo, authInfo)
               authToken <- authTokenService.create(user.userID)
             } yield {
-              val url = routes.ActivateAccountController.activate(authToken.id).absoluteURL()
+              val url = auth.routes.ActivateAccountController.activate(authToken.id).absoluteURL()
               mailerClient.send(Email(
                 subject = Messages("email.sign.up.subject"),
                 from = Messages("email.from"),

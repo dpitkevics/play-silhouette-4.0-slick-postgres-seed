@@ -1,4 +1,4 @@
-package controllers
+package controllers.auth
 
 import javax.inject.Inject
 
@@ -7,11 +7,12 @@ import com.mohiva.play.silhouette.api.exceptions.ProviderException
 import com.mohiva.play.silhouette.api.repositories.AuthInfoRepository
 import com.mohiva.play.silhouette.api.util.{ Credentials, PasswordHasherRegistry, PasswordInfo }
 import com.mohiva.play.silhouette.impl.providers.CredentialsProvider
-import forms.ChangePasswordForm
+import controllers.{ WebJarAssets, auth }
+import forms.auth.ChangePasswordForm
 import models.services.UserService
 import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.libs.concurrent.Execution.Implicits._
-import play.api.mvc.Controller
+import play.api.mvc.{ Action, AnyContent, Controller }
 import utils.auth.{ DefaultEnv, WithProvider }
 
 import scala.concurrent.Future
@@ -42,8 +43,8 @@ class ChangePasswordController @Inject() (
    *
    * @return The result to display.
    */
-  def view = silhouette.SecuredAction(WithProvider[DefaultEnv#A](CredentialsProvider.ID)) { implicit request =>
-    Ok(views.html.changePassword(ChangePasswordForm.form, request.identity))
+  def view: Action[AnyContent] = silhouette.SecuredAction(WithProvider[DefaultEnv#A](CredentialsProvider.ID)) { implicit request =>
+    Ok(views.html.auth.changePassword(ChangePasswordForm.form, request.identity))
   }
 
   /**
@@ -51,20 +52,20 @@ class ChangePasswordController @Inject() (
    *
    * @return The result to display.
    */
-  def submit = silhouette.SecuredAction(WithProvider[DefaultEnv#A](CredentialsProvider.ID)).async { implicit request =>
+  def submit: Action[AnyContent] = silhouette.SecuredAction(WithProvider[DefaultEnv#A](CredentialsProvider.ID)).async { implicit request =>
     ChangePasswordForm.form.bindFromRequest.fold(
-      form => Future.successful(BadRequest(views.html.changePassword(form, request.identity))),
+      form => Future.successful(BadRequest(views.html.auth.changePassword(form, request.identity))),
       password => {
         val (currentPassword, newPassword) = password
         val credentials = Credentials(request.identity.email.getOrElse(""), currentPassword)
         credentialsProvider.authenticate(credentials).flatMap { loginInfo =>
           val passwordInfo = passwordHasherRegistry.current.hash(newPassword)
           authInfoRepository.update[PasswordInfo](loginInfo, passwordInfo).map { _ =>
-            Redirect(routes.ChangePasswordController.view()).flashing("success" -> Messages("password.changed"))
+            Redirect(auth.routes.ChangePasswordController.view()).flashing("success" -> Messages("password.changed"))
           }
         }.recover {
           case e: ProviderException =>
-            Redirect(routes.ChangePasswordController.view()).flashing("error" -> Messages("current.password.invalid"))
+            Redirect(auth.routes.ChangePasswordController.view()).flashing("error" -> Messages("current.password.invalid"))
         }
       }
     )

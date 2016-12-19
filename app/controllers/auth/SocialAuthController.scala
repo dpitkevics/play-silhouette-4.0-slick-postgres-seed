@@ -1,4 +1,4 @@
-package controllers
+package controllers.auth
 
 import javax.inject.Inject
 
@@ -6,10 +6,11 @@ import com.mohiva.play.silhouette.api._
 import com.mohiva.play.silhouette.api.exceptions.ProviderException
 import com.mohiva.play.silhouette.api.repositories.AuthInfoRepository
 import com.mohiva.play.silhouette.impl.providers._
+import controllers.{ WebJarAssets, auth, pages }
 import models.services.UserService
 import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.libs.concurrent.Execution.Implicits._
-import play.api.mvc.{ Action, Controller }
+import play.api.mvc.{ Action, AnyContent, Controller }
 import utils.auth.DefaultEnv
 
 import scala.concurrent.Future
@@ -39,7 +40,7 @@ class SocialAuthController @Inject() (
    * @param provider The ID of the provider to authenticate against.
    * @return The result to display.
    */
-  def authenticate(provider: String) = Action.async { implicit request =>
+  def authenticate(provider: String): Action[AnyContent] = Action.async { implicit request =>
     (socialProviderRegistry.get[SocialProvider](provider) match {
       case Some(p: SocialProvider with CommonSocialProfileBuilder) =>
         p.authenticate().flatMap {
@@ -50,7 +51,7 @@ class SocialAuthController @Inject() (
             authInfo <- authInfoRepository.save(profile.loginInfo, authInfo)
             authenticator <- silhouette.env.authenticatorService.create(profile.loginInfo)
             value <- silhouette.env.authenticatorService.init(authenticator)
-            result <- silhouette.env.authenticatorService.embed(value, Redirect(routes.ApplicationController.index()))
+            result <- silhouette.env.authenticatorService.embed(value, Redirect(pages.routes.ApplicationController.index()))
           } yield {
             silhouette.env.eventBus.publish(LoginEvent(user, request))
             result
@@ -60,7 +61,7 @@ class SocialAuthController @Inject() (
     }).recover {
       case e: ProviderException =>
         logger.error("Unexpected provider error", e)
-        Redirect(routes.SignInController.view()).flashing("error" -> Messages("could.not.authenticate"))
+        Redirect(auth.routes.SignInController.view()).flashing("error" -> Messages("could.not.authenticate"))
     }
   }
 }
