@@ -27,7 +27,15 @@ Consult the [Silhouette documentation](http://silhouette.mohiva.com/docs) for mo
 
 ## Activator
 
-Not yet implemented
+[Activator Template](https://www.lightbend.com/activator/template/play-silhouette-4.0-slick-postgres-seed)
+
+## Getting Started
+
+* Install from activator template or clone this repository
+* Copy `database.conf.example` to `database.conf` and fill in your database connection data
+* Copy `mailer.conf.example` to `mailer.conf` and fill in your mailer settings
+* Copy `silhouette.conf.example` to `silhouette.conf` and fill in with your silhouette settings
+* Run project
 
 # License
 
