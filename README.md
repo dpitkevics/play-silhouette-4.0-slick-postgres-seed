@@ -19,6 +19,13 @@ This seed is based on [Play Silhouette seed](https://github.com/mohiva/play-silh
 * [Security headers](https://www.playframework.com/documentation/2.5.x/SecurityHeaders)
 * [CSRF Protection](https://www.playframework.com/documentation/2.5.x/ScalaCsrf)
 
+## Planned Features
+
+* Find a way to achieve accessing routes from templates without writing whole `@controllers.auth.routes.SignInController.view` but writing something shorter
+* Find out about Scala.js VS Coffeescript (or something similar)
+* In case Scala.js wins - implement Scala.js support (including scalatags and scala.css)
+* In case Coffeescript wins - implement elixir ([see Laravel Elixir](https://laravel.com/docs/master/elixir)) compilation of asset files
+
 ## Documentation
 
 Consult the [Silhouette documentation](http://silhouette.mohiva.com/docs) for more information. If you need help with the integration of Silhouette into your project, don't hesitate and ask questions in our [mailing list](https://groups.google.com/forum/#!forum/play-silhouette) or on [Stack Overflow](http://stackoverflow.com/questions/tagged/playframework).
