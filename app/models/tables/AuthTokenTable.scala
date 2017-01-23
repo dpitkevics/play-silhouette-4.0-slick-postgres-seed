@@ -12,7 +12,7 @@ case class DbAuthToken(
 
 class AuthTokenTable(tag: Tag) extends Table[DbAuthToken](tag, "auth_tokens") {
 
-  def id: Rep[String] = column[String]("id", O.PrimaryKey, O.AutoInc)
+  def id: Rep[String] = column[String]("id", O.PrimaryKey)
 
   def userID: Rep[String] = column[String]("user_id")
 
