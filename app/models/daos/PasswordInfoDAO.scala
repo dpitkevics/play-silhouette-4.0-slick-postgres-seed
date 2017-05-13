@@ -59,8 +59,12 @@ class PasswordInfoDAO @Inject() (
       dbLoginInfoOption.map {
         dbLoginInfo =>
           {
-            val dbPasswordInfo = DbPasswordInfo(authInfo.hasher, authInfo.password, authInfo.salt, dbLoginInfo.id.get)
-            db.run(passwordInfoQuery(loginInfo).update(dbPasswordInfo).transactionally)
+            db.run { 
+              passwordInfos.filter(_.loginInfoId === dbLoginInfo.id) 
+              .map(p => (p.hasher, p.password, p.salt)) 
+              .update((authInfo.hasher, authInfo.password, authInfo.salt)) 
+              .transactionally 
+            }
           }
       }
     }).map { _ =>
